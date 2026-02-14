@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SafeRoute – Solo Travel Safety Planner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animated background with floating elements -->
+    <div class="animated-bg">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+        <div class="floating-icon icon-1">✈️</div>
+        <div class="floating-icon icon-2">🗺️</div>
+        <div class="floating-icon icon-3">🛡️</div>
+        <div class="floating-icon icon-4">🌿</div>
+    </div>
+
+    <div class="page-wrapper">
+        <section class="hero-section">
+            <header class="brand">
+                
+                <div class="brand-text">
+                    <div class="brand-name">SafeRoute</div>
+                    <div class="brand-tagline-mini">Solo Travel Safety Planner</div>
+                </div>
+            </header>
+
+            <div class="hero-main">
+                <h1>Map every solo journey with a trusted safety itinerary
+                    
+                </h1>
+                <p class="hero-subtitle">SafeRoute helps solo travellers plan safer routes, share
+                    key details with trusted contacts, and build healthy
+                    routines around each day on the road.
+                    
+                </p>
+
+                <!-- Live traveler counter -->
+                <div class="traveler-counter">
+                    <div class="counter-item">
+                        <span id="activeCounter" class="counter-number">2,847</span>
+                        <span class="counter-label">Active Travelers</span>
+                    </div>
+                    <div class="counter-divider"></div>
+                    <div class="counter-item">
+                        <span class="counter-number">150+</span>
+                        <span class="counter-label">Places Covered</span>
+                    </div>
+                    <div class="counter-divider"></div>
+                    <div class="counter-item">
+                        <span class="rating-stars">⭐⭐⭐⭐⭐</span>
+                        <span class="counter-label">4.9/5 Rating</span>
+                    </div>
+                </div>
+
+                <div class="auth-card">
+                    <h2 class="auth-title">Start your safety itinerary</h2>
+                    <p class="auth-subtitle">
+                        Share a few details so we can attach your journeys to a
+                        personal safety profile.
+                    </p>
+
+                    <div id="formError" class="alert alert-error"></div>
+                    <div id="formSuccess" class="alert alert-success"></div>
+                    <div id="successOverlay" class="success-overlay">
+                        <div class="success-content">
+                            <div class="success-checkmark">✓</div>
+                            <p>Your profile is ready!</p>
+                        </div>
+                    </div>
+
+                    <form id="safetyForm" novalidate>
+                        <div class="form-group">
+                            <span class="input-icon">👤</span>
+                            <input id="fullName" type="text" class="form-input" placeholder="Full name" />
+                            <span class="input-checkmark">✓</span>
+                        </div>
+
+                        <div class="form-group">
+                            <span class="input-icon">📧</span>
+                            <input id="email" type="email" class="form-input" placeholder="Email address" />
+                            <span class="input-checkmark">✓</span>
+                        </div>
+
+                        <div class="form-group">
+                            <span class="input-icon">📱</span>
+                            <input id="phone" type="tel" class="form-input" placeholder="Phone number" />
+                            <span class="input-checkmark">✓</span>
+                        </div>
+
+                        <button type="submit" class="btn-primary" id="startTrip">
+                            <span class="btn-text">Create my safe itinerary</span>
+                            <span class="ripple"></span>
+                        </button>
+
+                        <p class="helper-text">
+                            We’ll only use your contact details for safety alerts,
+                            check-ins, and itinerary updates you enable.
+                        </p>
+                    </form>
+                    <!-- Social login buttons -->
+                    <div class="social-divider">
+                        <span>Or continue with</span>
+                    </div>
+
+                    <div class="social-buttons">
+                        <button class="social-btn google-btn" id="googleBtn" type="button">
+                            <span class="social-icon">🍎</i></span>
+                            <span class="social-text">Google</span>
+                        </button>
+                        <button class="social-btn apple-btn" id="appleBtn" type="button">
+                            <span class="social-icon">🍎</span>
+                            <span class="social-text">Apple</span>
+                        </button>
+                        <button class="social-btn facebook-btn" id="facebookBtn" type="button">
+                            <span class="social-icon">👍</span>
+                            <span class="social-text">Facebook</span>
+                        </button>
+                    </div>                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Live counter animation
+        function animateCounter() {
+            const counter = document.getElementById('activeCounter');
+            const targetValue = 2847;
+            const currentValue = parseInt(counter.textContent.replace(/,/g, ''));
+            const increment = Math.ceil((targetValue - currentValue) / 50);
+            let count = currentValue;
+
+            const interval = setInterval(() => {
+                count += increment;
+                if (count >= targetValue) {
+                    count = targetValue;
+                    clearInterval(interval);
+                }
+                counter.textContent = count.toLocaleString();
+            }, 30);
+        }
+
+        // Start counter animation when page loads
+        window.addEventListener('load', animateCounter);
+
+        // Social login handlers
+        document.getElementById('googleBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('🔐 Google login integration coming soon!');
+        });
+        document.getElementById('appleBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('🔐 Apple login integration coming soon!');
+        });
+        document.getElementById('facebookBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('🔐 Facebook login integration coming soon!');
+        });
+    </script>
+</body>
+</html>

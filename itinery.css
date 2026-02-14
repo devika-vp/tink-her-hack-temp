@@ -1,0 +1,257 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #dbeafe, #d1fae5);
+    padding: 30px;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+}
+
+.main-title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+    color: #1e3a8a;
+    margin-bottom: 30px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+}
+
+.card h2 {
+    color: #2563eb;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    margin-top: 15px;
+    color: #16a34a;
+}
+
+ul {
+    padding-left: 20px;
+    line-height: 1.8;
+}
+
+.day-card {
+    background: linear-gradient(135deg, #f0f9ff, #ecfdf5);
+    border-left: 5px solid #818cf8;
+}
+
+.day-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(129, 140, 248, 0.2);
+}
+
+.day-header h2 {
+    margin: 0;
+    color: #6366f1;
+    font-size: 24px;
+    min-width: 70px;
+}
+
+.day-title {
+    background: linear-gradient(135deg, #818cf8, #6366f1);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.activities-list {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.activities-list li {
+    margin: 10px 0;
+    color: #374151;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.route-card {
+    background: linear-gradient(135deg, #e0f2fe, #ccfbf1);
+}
+
+.city-info-card {
+    background: linear-gradient(135deg, #fbcfe8, #e0f2fe);
+    border-left: 5px solid #818cf8;
+    font-weight: 500;
+}
+
+.city-info-card p {
+    margin: 10px 0;
+    color: #374151;
+    font-size: 16px;
+}
+
+.city-info-card span {
+    color: #6366f1;
+    font-weight: 700;
+}
+
+.hotel-item,
+.restaurant-item {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 18px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    border-left: 5px solid #818cf8;
+    transition: all 0.3s ease;
+}
+
+.hotel-item:hover,
+.restaurant-item:hover {
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 4px 12px rgba(129, 140, 248, 0.2);
+    transform: translateX(4px);
+}
+
+.hotel-header,
+.restaurant-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.hotel-header h3,
+.restaurant-header h3 {
+    margin: 0;
+    color: #1f2937;
+    font-size: 18px;
+}
+
+.hotel-rating {
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+.cuisine-tag {
+    background: linear-gradient(135deg, #818cf8, #6366f1);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.hotel-item p,
+.restaurant-item p {
+    margin: 8px 0;
+    color: #4b5563;
+    font-size: 15px;
+}
+
+.hotel-item strong,
+.restaurant-item strong {
+    color: #1f2937;
+}
+
+.hotel-card {
+    background: linear-gradient(135deg, #e0f7fa, #f0fdf4);
+}
+
+.restaurant-card {
+    background: linear-gradient(135deg, #fef3c7, #fecaca);
+}
+
+.cost-card {
+    background: linear-gradient(135deg, #f0fdf4, #ecfdf5);
+}
+
+input[type="number"] {
+    padding: 10px;
+    width: 180px;
+    border-radius: 10px;
+    border: 1px solid #cbd5e1;
+    outline: none;
+}
+
+input[type="number"]:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+label {
+    font-weight: 500;
+}
+
+.primary-btn,
+.secondary-btn,
+button {
+    padding: 12px 22px;
+    border-radius: 12px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 5px;
+    transition: 0.3s;
+}
+
+.primary-btn {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white;
+}
+
+.primary-btn:hover {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+}
+
+.secondary-btn {
+    background: #f1f5f9;
+    color: #1e3a8a;
+    border: 1px solid #cbd5e1;
+}
+
+.secondary-btn:hover {
+    background: #e2e8f0;
+}
+
+.button-group {
+    text-align: center;
+    margin-top: 30px;
+}
+
+@media print {
+    body {
+        background: white;
+    }
+
+    .button-group,
+    button {
+        display: none;
+    }
+
+    .card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+}

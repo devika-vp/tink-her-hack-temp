@@ -1,0 +1,396 @@
+/* ================================
+   PLAN TRIP - MODERN WIZARD DESIGN
+================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #fbcfe8 0%, #e0f2fe 50%, #d9f99d 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* =================================
+   ANIMATED BACKGROUND
+================================= */
+
+.animated-bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.bg-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.2;
+    animation: float 10s ease-in-out infinite;
+}
+
+.orb-1 {
+    width: 400px;
+    height: 400px;
+    background: #a855f7;
+    top: -100px;
+    right: -100px;
+}
+
+.orb-2 {
+    width: 350px;
+    height: 350px;
+    background: #38bdf8;
+    bottom: -100px;
+    left: -100px;
+    animation-delay: 4s;
+}
+
+@keyframes float {
+    0%,100% { transform: translate(0,0); }
+    50% { transform: translate(40px,40px); }
+}
+
+/* =================================
+   WRAPPER
+================================= */
+
+.trip-wrapper {
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* =================================
+   HEADER
+================================= */
+
+.trip-header {
+    text-align: center;
+    margin-bottom: 40px;
+    animation: fadeDown 0.6s ease;
+}
+
+.page-title {
+    font-size: 34px;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.page-subtitle {
+    color: #6b7280;
+    margin-top: 10px;
+}
+
+@keyframes fadeDown {
+    from { opacity:0; transform:translateY(-20px);}
+    to { opacity:1; transform:translateY(0);}
+}
+
+/* =================================
+   PROGRESS BAR
+================================= */
+
+.progress-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 20%;
+    background: linear-gradient(90deg, #a5b4fc, #6366f1);
+    transition: width 0.4s ease;
+}
+
+.progress-text {
+    font-size: 12px;
+    font-weight: 600;
+    color: #6b7280;
+}
+
+/* =================================
+   STEPS (Wizard Style)
+================================= */
+
+.trip-step {
+    display: none;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 25px;
+    padding: 45px;
+    margin-bottom: 30px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    border: 1px solid rgba(255,255,255,0.8);
+    animation: fadeUp 0.5s ease;
+    flex-direction: column;
+    min-height: 550px;
+}
+
+.trip-step.active-step {
+    display: flex;
+}
+
+@keyframes fadeUp {
+    from { opacity:0; transform:translateY(20px);}
+    to { opacity:1; transform:translateY(0);}
+}
+
+/* =================================
+   STEP HEADER
+================================= */
+
+.step-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.step-header h2 {
+    font-size: 28px;
+    color: #1f2937;
+}
+
+.step-header p {
+    color: #6b7280;
+    margin-top: 8px;
+}
+
+/* =================================
+   OPTION CARDS
+================================= */
+
+.style-option,
+.experience-card,
+.state-card,
+.pref-option {
+    border: 2px solid #e5e7eb;
+    border-radius: 15px;
+    padding: 18px;
+    background: white;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.style-option:hover,
+.experience-card:hover,
+.state-card:hover,
+.pref-option:hover {
+    border-color: #818cf8;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(129,140,248,0.15);
+}
+
+.selected {
+    background: linear-gradient(135deg,#a5b4fc,#818cf8);
+    color: white;
+    border-color: #6366f1;
+}
+
+/* =================================
+   GRID LAYOUTS
+================================= */
+
+.travel-style-options,
+.preferences-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px,1fr));
+    gap: 15px;
+}
+
+.experience-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.state-cards-container {
+    max-height: 450px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Scrollbar */
+
+.state-cards-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.state-cards-container::-webkit-scrollbar-thumb {
+    background: #818cf8;
+    border-radius: 10px;
+}
+
+/* =================================
+   INPUTS
+================================= */
+
+.input-field {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 10px;
+    border: 2px solid #e5e7eb;
+    transition: 0.3s;
+}
+
+.input-field:focus {
+    border-color: #818cf8;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(129,140,248,0.1);
+}
+
+/* =================================
+   BUTTONS
+================================= */
+
+.step-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.btn-prev,
+.btn-next,
+.btn-generate {
+    padding: 12px 30px;
+    border-radius: 30px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.btn-prev {
+    background: #f3f4f6;
+    color: #374151;
+}
+
+.btn-next {
+    background: linear-gradient(135deg,#a5b4fc,#818cf8);
+    color: white;
+}
+
+.btn-generate {
+    background: linear-gradient(135deg,#10b981,#059669);
+    color: white;
+}
+
+.btn-next:hover,
+.btn-generate:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* =================================
+   REVIEW ITEMS (BOXES)
+================================= */
+
+.review-item {
+    background: linear-gradient(135deg, #f0f9ff 0%, #f3e8ff 100%);
+    border: 2px solid #e0e7ff;
+    border-radius: 15px;
+    padding: 18px 22px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(129, 140, 248, 0.08);
+}
+
+.review-item:hover {
+    border-color: #818cf8;
+    box-shadow: 0 8px 20px rgba(129, 140, 248, 0.15);
+    transform: translateY(-2px);
+}
+
+.review-label {
+    font-weight: 600;
+    color: #4f46e5;
+    font-size: 15px;
+    min-width: 140px;
+}
+
+.review-value {
+    font-weight: 700;
+    color: #1f2937;
+    font-size: 16px;
+    text-align: right;
+    flex: 1;
+    margin-left: 15px;
+}
+
+/* =================================
+   LOADING SPINNER
+================================= */
+
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #e5e7eb;
+    border-top: 5px solid #6366f1;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+    display: none;
+}
+
+.loader.active {
+    display: block;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* =================================
+   RESULT BOX
+================================= */
+
+#result {
+    margin-top: 30px;
+    padding: 25px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.95);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    animation: fadeUp 0.5s ease;
+}
+
+/* =================================
+   RESPONSIVE
+================================= */
+
+@media (max-width: 768px) {
+    .trip-step {
+        padding: 25px;
+        min-height: auto;
+    }
+
+    .step-buttons {
+        flex-direction: column;
+    }
+
+    .btn-prev,
+    .btn-next,
+    .btn-generate {
+        width: 100%;
+    }
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trip Itinerary</title>
+    <link rel="stylesheet" href="itinery.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1 class="main-title">Your Travel Plan</h1>
+
+    <!-- Selected City Info -->
+    <div class="card city-info-card">
+        <h2>📍 Destination</h2>
+        <p><strong>City:</strong> <span id="selectedCity">-</span></p>
+        <p><strong>State:</strong> <span id="selectedState">-</span></p>
+    </div>
+
+    <!-- Travel Route -->
+    <div class="card route-card">
+        <h2>Travel Route</h2>
+        <p>Home → City Center → Attractions → Hotel → Return</p>
+    </div>
+
+    <!-- Dynamic Day Plans -->
+    <div id="dayContainer"></div>
+
+    <!-- Hotel Section -->
+    <div class="card hotel-card">
+        <h2>🏨 Recommended Hotels</h2>
+        <div id="hotelContainer">
+            <p style="text-align: center; color: #6b7280; margin: 20px 0;">Loading hotel recommendations...</p>
+        </div>
+    </div>
+
+    <!-- Restaurants -->
+    <div class="card restaurant-card">
+        <h2>🍽️ Recommended Restaurants</h2>
+        <div id="restaurantContainer">
+            <p style="text-align: center; color: #6b7280; margin: 20px 0;">Loading restaurant recommendations...</p>
+        </div>
+    </div>
+
+    <!-- Auto Cost Calculator -->
+    <div class="card cost-card">
+        <h2>Estimate Your Cost</h2>
+
+        <p>Total Days: <strong id="displayDays"></strong></p>
+
+        <label>Hotel per Night (₹): </label>
+        <input type="number" id="hotelPerNight" value="2500"><br><br>
+
+        <label>Food per Day (₹): </label>
+        <input type="number" id="foodPerDay" value="1000"><br><br>
+
+        <label>Travel (₹ total): </label>
+        <input type="number" id="travelCost" value="2000"><br><br>
+
+        <label>Entry Tickets (₹ total): </label>
+        <input type="number" id="ticketsCost" value="1000"><br><br>
+
+        <button onclick="calculateTotal()" class="primary-btn">Calculate Total</button>
+
+        <h3 id="totalDisplay"></h3>
+    </div>
+
+    <!-- Buttons -->
+    <div class="button-group">
+        <button onclick="downloadPDF()" class="secondary-btn">Download as PDF</button>
+        <a href="city-places.html" class="secondary-btn">Back</a>
+        <a href="index.html" class="primary-btn">Home</a>
+    </div>
+
+</div>
+
+<script src="itinery.js"></script>
+
+</body>
+</html>

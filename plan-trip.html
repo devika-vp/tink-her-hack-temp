@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Your Trip – SafeRoute</title>
+    <link rel="stylesheet" href="plan-trip.css">
+</head>
+<body>
+    <!-- Animated background -->
+    <div class="animated-bg">
+        <div class="bg-orb orb-1"></div>
+        <div class="bg-orb orb-2"></div>
+    </div>
+
+    <div class="trip-wrapper">
+        <!-- Header with progress -->
+        <div class="trip-header">
+            <div class="header-top">
+                <h1 class="page-title">Welcome, <span id="userName">Traveller</span>! 🌿</h1>
+                <button id="logoutBtn" class="logout-btn">Logout</button>
+            </div>
+            <p class="page-subtitle">Let's plan your perfect solo adventure!</p>
+            
+            <!-- Progress bar -->
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <span class="progress-text" id="progressText">Step 1 of 5</span>
+            </div>
+        </div>
+
+        <!-- Step 1: Travel Style -->
+        <div class="trip-step step-1 active-step" id="step1">
+            <div class="step-header">
+                <h2>What's Your Travel Style?</h2>
+                <p>Help us understand how you love to explore</p>
+            </div>
+            <div class="travel-style-options">
+                <button class="style-option" data-style="adventure">
+                    <span class="style-icon">🏔️</span>
+                    <span class="style-name">Adventure</span>
+                    <span class="style-desc">Hiking & thrills</span>
+                </button>
+                <button class="style-option" data-style="beach">
+                    <span class="style-icon">🏖️</span>
+                    <span class="style-name">Beach</span>
+                    <span class="style-desc">Relaxation</span>
+                </button>
+                <button class="style-option" data-style="culture">
+                    <span class="style-icon">🏛️</span>
+                    <span class="style-name">Culture</span>
+                    <span class="style-desc">History & Art</span>
+                </button>
+                <button class="style-option" data-style="nature">
+                    <span class="style-icon">🌳</span>
+                    <span class="style-name">Nature</span>
+                    <span class="style-desc">Wildlife & forests</span>
+                </button>
+                <button class="style-option" data-style="mix">
+                    <span class="style-icon">🎭</span>
+                    <span class="style-name">Mix</span>
+                    <span class="style-desc">Everything!</span>
+                </button>
+            </div>
+            <button class="btn-next" onclick="nextStep(1)" style="display: none;" id="nextBtn1">Next</button>
+        </div>
+
+        <!-- Step 2: Experience Level -->
+        <div class="trip-step step-2" id="step2">
+            <div class="step-header">
+                <h2>Your Solo Travel Experience</h2>
+                <p>This helps us recommend safe options for you</p>
+            </div>
+            <div class="experience-options">
+                <label class="experience-card">
+                    <input type="radio" name="experience" value="beginner" class="exp-input">
+                    <span class="exp-icon">👶</span>
+                    <span class="exp-title">First Timer</span>
+                    <span class="exp-desc">New to solo travel, need safe & easy places</span>
+                </label>
+                <label class="experience-card">
+                    <input type="radio" name="experience" value="intermediate" class="exp-input">
+                    <span class="exp-icon">🥾</span>
+                    <span class="exp-title">Experienced</span>
+                    <span class="exp-desc">Independent explorer, handled trips before</span>
+                </label>
+                <label class="experience-card">
+                    <input type="radio" name="experience" value="advanced" class="exp-input">
+                    <span class="exp-icon">🗺️</span>
+                    <span class="exp-title">Very Experienced</span>
+                    <span class="exp-desc">Seasoned traveler, love off-beat destinations</span>
+                </label>
+            </div>
+            <div class="step-buttons">
+                <button class="btn-prev" onclick="prevStep(2)">Previous</button>
+                <button class="btn-next" onclick="nextStep(2)" style="display: none;" id="nextBtn2">Next</button>
+            </div>
+        </div>
+
+        <!-- Step 3: Select State (Personalized) -->
+        <div class="trip-step step-3" id="step3">
+            <div class="step-header">
+                <h2>Choose Your Destination</h2>
+                <p id="recommendationMsg" class="recommendation-msg"></p>
+            </div>
+            <div class="state-cards-container" id="stateCardsContainer">
+                <!-- Will be populated by JS based on recommendations -->
+            </div>
+            <div class="state-details" id="stateDetails" style="display: none;">
+                <!-- Will show info about selected state -->
+            </div>
+            <div class="step-buttons">
+                <button class="btn-prev" onclick="prevStep(3)">Previous</button>
+                <button class="btn-next" onclick="nextStep(3)" style="display: none;" id="nextBtn3">Next</button>
+            </div>
+        </div>
+
+        <!-- Step 4: Duration & Preferences -->
+        <div class="trip-step step-4" id="step4">
+            <div class="step-header">
+                <h2>Duration & Activities</h2>
+                <p>Customize your perfect itinerary</p>
+            </div>
+            
+            <div class="trip-card">
+                <label>🗓️ Number of Days</label>
+                <input type="number" id="days" min="1" max="10" placeholder="Enter 1-10 days" class="input-field">
+            </div>
+
+            <!--<div class="trip-card">
+                <label>🎯 Preferred Activities</label>
+                <div class="preferences-grid">
+                    <label class="pref-option">
+                        <input type="checkbox" value="Beaches"><span>🏖️ Beaches</span>
+                    </label>
+                    <label class="pref-option">
+                        <input type="checkbox" value="Mountains"><span>⛰️ Mountains</span>
+                    </label>
+                    <label class="pref-option">
+                        <input type="checkbox" value="Historical"><span>🏛️ Historical</span>
+                    </label>
+                    <label class="pref-option">
+                        <input type="checkbox" value="Shopping"><span>🛍️ Shopping</span>
+                    </label>
+                    <label class="pref-option">
+                        <input type="checkbox" value="Indoor"><span>🎮 Indoor</span>
+                    </label>
+                    <label class="pref-option">
+                        <input type="checkbox" value="Food"><span>🍜 Food Tours</span>
+                    </label>
+                </div>-->
+            </div>
+
+            <div class="step-buttons">
+                <button class="btn-prev" onclick="prevStep(4)">Previous</button>
+                <button class="btn-next" onclick="nextStep(4)" id="nextBtn4">Review & Generate</button>
+            </div>
+        </div>
+
+        <!-- Step 5: Review -->
+        <div class="trip-step step-5" id="step5">
+            <div class="step-header">
+                <h2>Your Trip Summary</h2>
+                <p>Review before we generate your safe itinerary</p>
+            </div>
+            <div class="review-cards" id="reviewCards">
+                <!-- Will be populated by JS -->
+            </div>
+            <div class="step-buttons">
+                <button class="btn-prev" onclick="prevStep(5)">Edit</button>
+                <button class="btn-generate" id="generateBtn">✨ Generate Safe Itinerary</button>
+            </div>
+        </div>
+
+        <!-- Result -->
+        <div id="result"></div>
+    </div>
+
+    <script src="plan-trip.js"></script>
+</body>
+</html>

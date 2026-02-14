@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Places – SafeRoute</title>
+    <link rel="stylesheet" href="places.css">
+</head>
+<body>
+    <div class="places-wrapper">
+        <header class="places-header">
+            <h1 id="cityTitle">Top Places</h1>
+            <button id="backBtn">⬅ Back to Trip Planner</button>
+        </header>
+
+        <div class="cards-container">
+            <!-- Flip cards will be generated dynamically by city-places.js -->
+        </div>
+    </div>
+
+    <!-- Modal for detailed place info -->
+    <div id="placeModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-body">
+                <div class="modal-header">
+                    <h2 id="modalPlaceName"></h2>
+                    <img id="modalPlaceImage" src="" alt="place" class="modal-image">
+                </div>
+                <div class="modal-details">
+                    <div class="detail-section">
+                        <h3>📍 Location & Map</h3>
+                        <div id="mapContainer" style="width: 100%; height: 300px; border-radius: 10px; overflow: hidden;"></div>
+                    </div>
+                    <div class="detail-section">
+                        <h3>✨ Specialities</h3>
+                        <p id="modalSpecialities"></p>
+                    </div>
+                    <div class="detail-section">
+                        <h3>📅 Best Season</h3>
+                        <p id="modalSeason"></p>
+                    </div>
+                    <div class="detail-section">
+                        <h3>⏰ Best Time to Visit</h3>
+                        <p id="modalTime"></p>
+                    </div>
+                    <div class="detail-section">
+                        <h3>🛡️ Solo Travel Safety Score</h3>
+                        <div id="safetyScoreContainer" class="safety-score">
+                            <div id="safetyBar" class="safety-bar"></div>
+                            <p id="modalSafetyScore"></p>
+                        </div>
+                    </div>
+                    <div class="detail-section">
+                        <h3>💡 Safety Tips</h3>
+                        <p id="modalSafetyTips"></p>
+                    </div>
+                    <div class="detail-section button-section">
+                        <button id="createItineraryBtn" class="itinerary-btn">📋 Create Itinerary</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="city-places.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdO0RDuPEAnh1QArC6ZrPjiI5PcQfYj64"></script>
+    <script>
+        // Back button functionality
+        document.getElementById("backBtn").addEventListener("click", () => {
+            window.location.href = "plan-trip.html";
+        });
+
+        // Check for selected city/state in localStorage
+        const selectedState = localStorage.getItem("selectedCity");
+        if (!selectedState) {
+            alert("No state selected! Redirecting to trip planner.");
+            window.location.href = "plan-trip.html";
+        }
+    </script>
+</body>
+</html>
