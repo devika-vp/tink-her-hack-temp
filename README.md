@@ -125,6 +125,10 @@ AI integration enhances place recommendations dynamically.
 
 **Application Workflow:**
 
+
+
+<img width="196" height="541" alt="Tink-her-flowchart drawio" src="https://github.com/user-attachments/assets/216fcff2-f5ad-442f-b657-74fb1c17397e" />
+
 User enters name, email, phone number.
 Data stored in LocalStorage.
 User selects travel style.
@@ -138,8 +142,7 @@ Additional Documentation
 API Documentation
 Gemini AI Integration
 
-![Workflow](docs/workflow.png)
-*Add caption explaining your workflow*
+
 
 ---
 
