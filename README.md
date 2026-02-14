@@ -199,7 +199,7 @@ Gemini AI Integration
 ## Project Demo
 
 ### Video
-[Add your demo video link here - YouTube, Google Drive, etc.]
+https://drive.google.com/drive/folders/1aIzoHyFPcg6Qsrnw11VB-z-ucJFdVmP9?usp=drive_link 
 
 *Explain what the video demonstrates - key features, user flow, technical highlights*
 
